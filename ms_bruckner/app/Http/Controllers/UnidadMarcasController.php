@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\UnidadTipo as UnidadTipo;
 
-class UnidadTipos extends Controller {
+class UnidadMarcasController extends Controller {
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +15,8 @@ class UnidadTipos extends Controller {
 
     // Funcion para listar todos los datos de la tabla
     public function index(){
-        $code = 200;
         $data = UnidadTipo::all();
-        return response()->json( $data, $code );
+        return response()->json( $data );
     }
 
     /**
@@ -39,8 +38,27 @@ class UnidadTipos extends Controller {
         $row->descripcion = $request['descripcion'];
 
         $row->save();
-        $code = $row->isClean() ? 201 : 302;
-        return response()->json( $data, $code );
+
+        if( $row->isClean() ){
+
+            session()->flash(
+                'flash', [
+                    'status' => "success",
+                    'message' => "Registro creado correctamente"
+                ]
+            );
+
+            return redirect('/areas');
+
+        } else {
+            session()->flash(
+                'flash', [
+                    'status' => "error",
+                    'message' => "datos incorrectos"
+                ]
+            );
+        }
+
     }
 
     /**
