@@ -3,10 +3,39 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ApiRequest;
 
 use App\Models\UnidadTipo as UnidadTipo;
 
-class UnidadTipos extends Controller {
+class StoreRequest extends ApiRequest {
+    public function rules() {
+        return [
+            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
+        ];
+    }
+    public function messages() {
+        return [
+            'nombre.unique' => 'El nombre ya está registrado',
+            'nombre.required' => 'El nombre es requerido'
+        ];
+    }
+}
+
+class UpdateRequest extends ApiRequest {
+    public function rules() {
+        return [
+            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
+        ];
+    }
+    public function messages() {
+        return [
+            'nombre.unique' => 'El nombre ya está registrado',
+            'nombre.required' => 'El nombre es requerido'
+        ];
+    }
+}
+
+class UnidadTiposController extends Controller {
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +46,9 @@ class UnidadTipos extends Controller {
     public function index(){
         $code = 200;
         $data = UnidadTipo::all();
-        return response()->json( $data, $code );
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**
@@ -26,11 +57,7 @@ class UnidadTipos extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( Request $request ){
-
-        $request->validate([
-            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
-        ]);
+    public function store( StoreRequest $request ){
 
         $row = new UnidadTipo();
         //$row->created_by = $request->user()->id;
@@ -38,7 +65,10 @@ class UnidadTipos extends Controller {
 
         $row->save();
         $code = $row->isClean() ? 201 : 400;
-        return response()->json( [], $code );
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 
     /**
@@ -50,7 +80,9 @@ class UnidadTipos extends Controller {
     public function show($id){
         $code = 200;
         $data = UnidadTipo::find( $id );
-        return response()->json( $data, $code );
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**
@@ -73,7 +105,10 @@ class UnidadTipos extends Controller {
 
         $row->save();
         $code = $row->isClean() ? 201 : 400;
-        return response()->json( [], $code );
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 
     /**
@@ -86,6 +121,9 @@ class UnidadTipos extends Controller {
         $code = 200;
         $data = UnidadTipo::find( $id );
         $data->delete();
-        return response()->json( [], $code );
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\UnidadTipo as UnidadTipo;
 
-class UnidadMarcas extends Controller {
+class UnidadMarcasController extends Controller {
     /**
      * Display a listing of the resource.
      *
