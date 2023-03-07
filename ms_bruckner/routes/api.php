@@ -6,6 +6,9 @@ use App\Http\Controllers\unidadesController as Unidades;
 
 //use App\Http\Controllers\Unidad as Unidades;
 
+use App\Http\Controllers\UnidadTipos as UnidadTipos;
+use App\Http\Controllers\UnidadMarcas as UnidadMarcas;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,3 +38,6 @@ Route::get('/unidades', function () {
     php artisan make:controller unidadesController --api
 });
 */
+Route::apiResource( '/unidad-tipos', UnidadTipos::class );
+Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
+
