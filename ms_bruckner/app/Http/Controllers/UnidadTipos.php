@@ -29,16 +29,18 @@ class UnidadTipos extends Controller {
     public function store( Request $request ){
 
         $request->validate([
-            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
+            'nombre' => ['required', "unique:App\Models\Area,nombre"],
+            'descripcion' => ['required'],
         ]);
 
         $row = new UnidadTipo();
-        //$row->created_by = $request->user()->id;
+        $row->created_by = $request->user()->id;
         $row->nombre = $request['nombre'];
+        $row->descripcion = $request['descripcion'];
 
         $row->save();
-        $code = $row->isClean() ? 201 : 400;
-        return response()->json( [], $code );
+        $code = $row->isClean() ? 201 : 302;
+        return response()->json( $data, $code );
     }
 
     /**
@@ -48,9 +50,8 @@ class UnidadTipos extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $code = 200;
         $data = UnidadTipo::find( $id );
-        return response()->json( $data, $code );
+        return response()->json( $data );
     }
 
     /**
@@ -62,18 +63,38 @@ class UnidadTipos extends Controller {
      */
     public function update(Request $request, $id){
 
-
         $request->validate([
-            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre,$id"],
+            'nombre' => ['required', "unique:App\Models\Planta,nombre,$id"],
+            'descripcion' => ['required'],
         ]);
-
         $row = UnidadTipo::find( $id );
-        //$row->created_by = $request->user()->id;
+        $row->updated_by = $request->user()->id;
         $row->nombre = $request['nombre'];
+        $row->descripcion = $request['descripcion'];
 
         $row->save();
-        $code = $row->isClean() ? 201 : 400;
-        return response()->json( [], $code );
+
+        if( $row->isClean() ){
+
+            session()->flash(
+                'flash', [
+                    'status' => "success",
+                    'message' => "Registro creado correctamente"
+                ]
+            );
+
+            return redirect('/areas');
+
+        } else {
+            session()->flash(
+                'flash', [
+                    'status' => "error",
+                    'message' => "datos incorrectos"
+                ]
+            );
+        }
+        
+
     }
 
     /**
@@ -83,9 +104,7 @@ class UnidadTipos extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $code = 200;
         $data = UnidadTipo::find( $id );
         $data->delete();
-        return response()->json( [], $code );
     }
 }

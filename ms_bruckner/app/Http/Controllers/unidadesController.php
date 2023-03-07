@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class unidadesController extends Controller
+use App\Models\Unidad as Unidad;
+
+
+class UnidadesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        echo "PERRURRY";
+        $code = 200;
+        $data = Unidad::all();
+        return response()->json( $data, $code );
     }
 
     /**
@@ -19,7 +24,22 @@ class unidadesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //  echo "saludo";
+     // print_r($request);
+      //return response()->json($request);
+        /*
+        $request->validate([
+            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
+        ]);
+
+        $row = new Unidad();
+        //$row->created_by = $request->user()->id;
+        $row->nombre = $request['modelo'];
+
+        $row->save();
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json( [], $code );
+        */
     }
 
     /**
@@ -27,7 +47,8 @@ class unidadesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Unidad::find( $id );
+        return response()->json( $data );
     }
 
     /**
