@@ -92,12 +92,7 @@ class UnidadTiposController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
-
-
-        $request->validate([
-            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre,$id"],
-        ]);
+    public function update( UpdateRequest $request, $id ){
 
         $row = UnidadTipo::find( $id );
         //$row->created_by = $request->user()->id;
@@ -114,7 +109,7 @@ class UnidadTiposController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){

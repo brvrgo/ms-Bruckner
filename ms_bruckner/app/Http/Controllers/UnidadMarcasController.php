@@ -3,8 +3,38 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ApiRequest;
 
-use App\Models\UnidadTipo as UnidadTipo;
+use App\Models\UnidadMarca as UnidadMarca;
+
+class StoreRequest extends ApiRequest {
+    public function rules() {
+        return [
+            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
+        ];
+    }
+    public function messages() {
+        return [
+            'nombre.unique' => 'El nombre ya está registrado',
+            'nombre.required' => 'El nombre es requerido'
+        ];
+    }
+}
+
+class UpdateRequest extends ApiRequest {
+    public function rules() {
+        return [
+            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
+        ];
+    }
+    public function messages() {
+        return [
+            'nombre.unique' => 'El nombre ya está registrado',
+            'nombre.required' => 'El nombre es requerido'
+        ];
+    }
+}
+
 
 class UnidadMarcasController extends Controller {
     /**
@@ -15,8 +45,11 @@ class UnidadMarcasController extends Controller {
 
     // Funcion para listar todos los datos de la tabla
     public function index(){
-        $data = UnidadTipo::all();
-        return response()->json( $data );
+        $code = 200;
+        $data = UnidadMarca::all();
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**
