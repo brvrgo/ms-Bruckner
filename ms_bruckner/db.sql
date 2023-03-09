@@ -152,7 +152,7 @@ drop table if exists `servicio_seguimiento`;
 create table `servicio_seguimiento` (
     `id` bigint unsigned auto_increment primary key,
     `servicio_id` int unsigned default null,
-    `paso_id` int unsigned default null,
+    `paso_id` tinyint unsigned default null,
 
     `notas` varchar(255) default null,
 
@@ -166,9 +166,6 @@ create table `servicio_seguimiento` (
     foreign key (`created_by`) references `users`(`id`) on update cascade on delete restrict,
     foreign key (`updated_by`) references `users`(`id`) on update cascade on delete restrict        
 );
-
-
-
 
 
 
