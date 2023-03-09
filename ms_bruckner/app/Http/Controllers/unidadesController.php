@@ -24,22 +24,25 @@ class UnidadesController extends Controller
      */
     public function store(Request $request)
     {
+      
       //  echo "saludo";
      // print_r($request);
       //return response()->json($request);
-        /*
-        $request->validate([
-            'nombre' => ['required', "unique:App\Models\UnidadTipo,nombre"],
-        ]);
-
+        
+      
         $row = new Unidad();
-        //$row->created_by = $request->user()->id;
-        $row->nombre = $request['modelo'];
+        $row->economico = $request['economico'];
+        $row->tipo_id = $request['tipo_id'];
+        $row->marca_id = $request['marca_id'];
+        $row->modelo = $request['modelo'];
+        $row->serie = $request['serie'];
+        $row->placa = $request['placa'];
+     
 
         $row->save();
         $code = $row->isClean() ? 201 : 400;
         return response()->json( [], $code );
-        */
+       
     }
 
     /**
