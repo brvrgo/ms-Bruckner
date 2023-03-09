@@ -51,7 +51,11 @@ class ServiciosController extends Controller
         $code = 200;
         $data = Servicio::all();
         
-       return response()->json( $data, $code );
+        $code = 200;
+        $data = Unidad::all();
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**

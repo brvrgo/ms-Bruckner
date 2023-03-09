@@ -17,7 +17,11 @@ class ServicioCategoriasController extends Controller
         $code = 200;
         $data = ServCat::all();
         
-       return response()->json( $data, $code );
+        $code = 200;
+        $data = Unidad::all();
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**

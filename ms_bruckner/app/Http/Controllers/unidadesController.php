@@ -17,7 +17,9 @@ class UnidadesController extends Controller
     {
         $code = 200;
         $data = Unidad::all();
-        return response()->json( $data, $code );
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**
