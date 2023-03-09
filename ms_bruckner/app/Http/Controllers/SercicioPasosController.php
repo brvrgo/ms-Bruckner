@@ -14,8 +14,9 @@ class SercicioPasosController extends Controller
     {
         $code = 200;
         $data = ServicioPasos::all();
-        
-       return response()->json( $data, $code );
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**

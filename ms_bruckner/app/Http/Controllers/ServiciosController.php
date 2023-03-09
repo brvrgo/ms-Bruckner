@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Servicio as Servicio;
+use App\Http\Requests\ApiRequest;
 
 class StoreRequest extends ApiRequest {
 public function rules() {
@@ -51,8 +52,6 @@ class ServiciosController extends Controller
         $code = 200;
         $data = Servicio::all();
         
-        $code = 200;
-        $data = Unidad::all();
         return response()->json([
             'data' => $data
         ], $code );

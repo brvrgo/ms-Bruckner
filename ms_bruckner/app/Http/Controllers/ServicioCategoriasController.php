@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ServicioCategoria as ServCat;
+use App\Models\ServicioCategoria as ServicioCategorias;
 
 
 class ServicioCategoriasController extends Controller
@@ -15,10 +15,8 @@ class ServicioCategoriasController extends Controller
     {
         
         $code = 200;
-        $data = ServCat::all();
+        $data = ServicioCategorias::all();
         
-        $code = 200;
-        $data = Unidad::all();
         return response()->json([
             'data' => $data
         ], $code );
