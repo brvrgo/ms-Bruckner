@@ -5,8 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Servicio as Servicio;
 
+class StoreRequest extends ApiRequest {
+public function rules() {
+    return [
+        'categoria_id' => ['required'],
+        'unidad_id'=> ['required'] 
+    ];
+}
+public function messages() {
+    return [
+        'unidad_id.required' => 'La unidad es requerida',
+        'categoria_id.required' => 'Definir el servicio es requerido'
+    ];
+}
+}
+
+class UpdateRequest extends ApiRequest {
+    public function rules() {
+        return [
+            'categoria_id' => ['required'],
+            'unidad_id'=> ['required'] 
+        ];
+    }
+    public function messages() {
+        return [
+            'unidad_id.required' => 'La unidad es requerida',
+            'categoria_id.required' => 'Definir el servicio es requerido'
+        ];
+    }
+}
+
+
 class ServiciosController extends Controller
 {
+
+
 
 ///Falta definir la restricción para dos servicios iguales en la misma unidad
 

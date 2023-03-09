@@ -9,6 +9,8 @@ use App\Http\Controllers\UnidadMarcasController as UnidadMarcas;
 
 use App\Http\Controllers\ServiciosController as Servicio;
 use App\Http\Controllers\ServicioCategoriasController as ServicioCategorias;
+use App\Http\Controllers\SercicioPasosController as ServicioPasos;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,7 +31,8 @@ Route::apiResource( '/unidades', Unidades::class);
 Route::apiResource( '/unidad-tipos', UnidadTipos::class );
 Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
 
-Route::apiResource( '/servicio', Servicio::class);
+Route::apiResource( '/servicios', Servicio::class);
 Route::apiResource( '/servicio-categorias', ServicioCategorias::class);
+Route::apiResource( '/servicio-pasos', ServicioPasos::class);
 
 
