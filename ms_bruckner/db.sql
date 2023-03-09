@@ -47,9 +47,10 @@ create table `unidades` (
     `marca_id` smallint unsigned default null,
 
     `economico` varchar(50) default null,
-    `modelo` varchar(255) default null,
+    `anio` varchar(50) default null,
     `serie` varchar(50) default null,
     `placa` varchar(20) default null,
+    `modelo` varchar(100) default null,
 
     `created_by` bigint unsigned default null,
     `updated_by` bigint unsigned default null,
