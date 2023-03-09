@@ -19,7 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Clear application cache:
+Route::get('/borrar-cache', function() {
+    Artisan::call('cache:clear');
+	Artisan::call('route:cache');
+ 	Artisan::call('config:cache');
+    Artisan::call('view:clear');
 
-
-
-
+    echo "cache eliminada";
+});

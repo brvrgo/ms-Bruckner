@@ -34,5 +34,3 @@ Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
 Route::apiResource( '/servicios', Servicio::class);
 Route::apiResource( '/servicio-categorias', ServicioCategorias::class);
 Route::apiResource( '/servicio-pasos', ServicioPasos::class);
-
-
