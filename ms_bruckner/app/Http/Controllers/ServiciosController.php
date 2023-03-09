@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Servicio as Servicio;
 
-use App\Models\Unidad as Unidad;
-
-
-class UnidadesController extends Controller
+class ServiciosController extends Controller
 {
+
+///Falta definir la restricción para dos servicios iguales en la misma unidad
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $code = 200;
-        $data = Unidad::all();
-        return response()->json( $data, $code );
+        $data = Servicio::all();
+        
+       return response()->json( $data, $code );
     }
 
     /**
@@ -24,23 +26,17 @@ class UnidadesController extends Controller
      */
     public function store(Request $request)
     {
-      
-
         
-      
-        $row = new Unidad();
-        $row->economico = $request['economico'];
-        $row->tipo_id = $request['tipo_id'];
-        $row->marca_id = $request['marca_id'];
-        $row->modelo = $request['modelo'];
-        $row->serie = $request['serie'];
-        $row->placa = $request['placa'];
+        $row = new Servicio();
+        $row->categoria_id = $request['categoria_id'];
+        $row->unidad_id = $request['unidad_id'];
+        $row->notas = $request['notas'];
+        
      
 
         $row->save();
         $code = $row->isClean() ? 201 : 400;
         return response()->json( [], $code );
-       
     }
 
     /**
@@ -48,27 +44,20 @@ class UnidadesController extends Controller
      */
     public function show(string $id)
     {
-        $data = Unidad::find( $id );
+        $data = Servicio::find( $id );
         return response()->json( $data );
     }
 
     /**
      * Update the specified resource in storage.
      */
-
-
     public function update(Request $request, string $id)
-    {   
-      
+    {
+        $row = Servicio::find( $id );
         
-        $row = Unidad::find( $id );
-        
-        $row->economico = $request['economico'];
-        $row->tipo_id = $request['tipo_id'];
-        $row->marca_id = $request['marca_id'];
-        $row->modelo = $request['modelo'];
-        $row->serie = $request['serie'];
-        $row->placa = $request['placa'];
+        $row->categoria_id = $request['categoria_id'];
+        $row->unidad_id = $request['unidad_id'];
+        $row->notas = $request['notas'];
 
       
 
@@ -78,7 +67,6 @@ class UnidadesController extends Controller
             'status' => 'success',
             'data' => []
         ], $code );
-        
     }
 
     /**
@@ -86,7 +74,7 @@ class UnidadesController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = Unidad::find( $id );
+        $data = Servicio::find( $id );
         $data->delete();
         return response()->json([
             'status' => 'success',

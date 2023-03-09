@@ -7,6 +7,8 @@ use App\Http\Controllers\UnidadesController as Unidades;
 use App\Http\Controllers\UnidadTiposController as UnidadTipos;
 use App\Http\Controllers\UnidadMarcasController as UnidadMarcas;
 
+use App\Http\Controllers\ServiciosController as Servicio;
+use App\Http\Controllers\ServicioCategoriasController as ServicioCategorias;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,15 +29,7 @@ Route::apiResource( '/unidades', Unidades::class);
 Route::apiResource( '/unidad-tipos', UnidadTipos::class );
 Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
 
+Route::apiResource( '/servicio', Servicio::class);
+Route::apiResource( '/servicio-categorias', ServicioCategorias::class);
 
-/*
-Route::get('/unidades', function () {
-    echo "perrurry";    
-    return response()->json([
-        'name' => 'Abigail',
-        'state' => 'CA',
-    ]);
-    php artisan make:controller unidadesController --api
-});
-*/
 
