@@ -9,7 +9,6 @@ use App\Models\Unidad as Unidad;
 
 class UnidadesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
@@ -35,10 +34,9 @@ class UnidadesController extends Controller
         $row->economico = $request['economico'];
         $row->tipo_id = $request['tipo_id'];
         $row->marca_id = $request['marca_id'];
-        $row->anio = $request['anio'];
+        $row->modelo = $request['modelo'];
         $row->serie = $request['serie'];
         $row->placa = $request['placa'];
-        $row->modelo = $request['modelo'];
      
 
         $row->save();
@@ -70,10 +68,9 @@ class UnidadesController extends Controller
         $row->economico = $request['economico'];
         $row->tipo_id = $request['tipo_id'];
         $row->marca_id = $request['marca_id'];
-        $row->anio = $request['anio'];
+        $row->modelo = $request['modelo'];
         $row->serie = $request['serie'];
         $row->placa = $request['placa'];
-        $row->modelo = $request['modelo'];
 
       
 
@@ -89,7 +86,6 @@ class UnidadesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-
     public function destroy(string $id)
     {
         $data = Unidad::find( $id );
