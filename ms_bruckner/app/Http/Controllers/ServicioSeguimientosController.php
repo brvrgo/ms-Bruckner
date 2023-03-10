@@ -3,20 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ServicioPaso as ServicioPasos;
 
-class SercicioPasosController extends Controller
+class SercicioSeguimientosPasoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $code = 200;
-        $data = ServicioPasos::all();
-        return response()->json([
-            'data' => $data
-        ], $code );
+        //
     }
 
     /**

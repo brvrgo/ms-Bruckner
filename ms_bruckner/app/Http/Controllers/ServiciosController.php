@@ -51,7 +51,7 @@ class ServiciosController extends Controller
     {
         $code = 200;
           $data = Servicio::with([
-            'servicioCategoria:id,nombre',
+            'categoria:id,nombre',
             'unidad'
         ])
         ->get();
@@ -64,7 +64,7 @@ class ServiciosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         
         $row = new Servicio();
@@ -89,7 +89,7 @@ class ServiciosController extends Controller
      
          $code = 200;
         $data = Servicio::with([
-             'servicioCategoria:id,nombre',
+             'categoria:id,nombre',
              'unidad'
             
          ])
@@ -102,7 +102,7 @@ class ServiciosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $row = Servicio::find( $id );
         

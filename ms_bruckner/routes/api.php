@@ -9,7 +9,7 @@ use App\Http\Controllers\UnidadMarcasController as UnidadMarcas;
 
 use App\Http\Controllers\ServiciosController as Servicio;
 use App\Http\Controllers\ServicioCategoriasController as ServicioCategorias;
-use App\Http\Controllers\SercicioPasosController as ServicioPasos;
+use App\Http\Controllers\ServicioPasosController as ServicioPasos;
 
 /*
 |--------------------------------------------------------------------------

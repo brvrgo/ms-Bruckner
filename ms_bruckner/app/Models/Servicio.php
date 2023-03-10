@@ -13,14 +13,26 @@ class Servicio extends Model
 
     protected $table = 'servicios';
 
-    public function servicioCategoria( ){
+    public function categoria( ){ 
         return $this->belongsTo( ServicioCategoria::class, 'categoria_id', 'id');
         
     }
 
     public function unidad( ){
-        return $this->hasOne( Unidad::class,  'id','unidad_id');
-        
+        return $this->hasOne( Unidad::class, 'id' ,'unidad_id');
         
     }
+
+    
+    /*
+    public function paso_actual( ){
+        return $this->hasOne( Unidad::class, 'id' ,'unidad_id');//ultimo paso creado
+        
+    }
+
+    public function pasos( ){
+        return $this->hasMany( Unidad::class, 'id' ,'unidad_id');
+        
+    }
+    */
 }
