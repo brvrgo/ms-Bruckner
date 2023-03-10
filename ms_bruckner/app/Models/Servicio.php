@@ -12,4 +12,15 @@ class Servicio extends Model
     use SoftDeletes;
 
     protected $table = 'servicios';
+
+    public function servicioCategoria( ){
+        return $this->belongsTo( ServicioCategoria::class, 'categoria_id', 'id');
+        
+    }
+
+    public function unidad( ){
+        return $this->hasOne( Unidad::class,  'id','unidad_id');
+        
+        
+    }
 }

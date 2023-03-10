@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ServicioPasos as ServicioPasos;
+use App\Models\ServicioPaso as ServicioPasos;
 
 class SercicioPasosController extends Controller
 {

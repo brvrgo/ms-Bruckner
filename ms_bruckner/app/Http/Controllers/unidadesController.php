@@ -15,7 +15,11 @@ class UnidadesController extends Controller
     public function index()
     {
         $code = 200;
-        $data = Unidad::all();
+        $data = Unidad::with([
+            'tipo:id,nombre',
+            'marca:id,nombre'
+        ])
+        ->get();
         return response()->json([
             'data' => $data
         ], $code );
@@ -49,9 +53,16 @@ class UnidadesController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        $data = Unidad::find( $id );
-        return response()->json( $data );
+    {   
+        $code = 200;
+       $data = Unidad::with([
+            'tipo:id,nombre',
+            'marca:id,nombre'
+        ])
+        ->find($id);
+        return response()->json([
+            'data' => $data
+        ], $code );
     }
 
     /**

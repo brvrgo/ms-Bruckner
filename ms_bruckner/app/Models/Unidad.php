@@ -13,12 +13,23 @@ class Unidad extends Model {
     protected $table = 'unidades';
 
     public function marca( ){
-        return $this->belongsTo( Marca::class, 'marca_id', 'id');
-        //return $this->hasOne(Marca::class);
+        return $this->belongsTo( UnidadMarca::class, 'marca_id', 'id');
+
     }
 
     public function tipo( ){
-        return $this->belongsTo( Tipo::class,  'tipo_id','id');
-        //return $this->hasOne(Tipo::class);
+        return $this->belongsTo( UnidadTipo::class,  'tipo_id','id');
+        
     }
+    /*
+    public function servicios( ){
+        return $this->belongsTo( UnidadTipo::class,  'tipo_id','id'); //hasMany
+        
+    }
+
+    public function serviciosAbiertos( ){
+        return $this->belongsTo( UnidadTipo::class,  'tipo_id','id');
+        
+    }
+    */
 }

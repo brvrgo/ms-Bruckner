@@ -50,7 +50,11 @@ class ServiciosController extends Controller
     public function index()
     {
         $code = 200;
-        $data = Servicio::all();
+          $data = Servicio::with([
+            'servicioCategoria:id,nombre',
+            'unidad'
+        ])
+        ->get();
         
         return response()->json([
             'data' => $data
@@ -73,6 +77,8 @@ class ServiciosController extends Controller
         $row->save();
         $code = $row->isClean() ? 201 : 400;
         return response()->json( [], $code );
+
+      
     }
 
     /**
@@ -80,8 +86,17 @@ class ServiciosController extends Controller
      */
     public function show(string $id)
     {
-        $data = Servicio::find( $id );
-        return response()->json( $data );
+     
+         $code = 200;
+        $data = Servicio::with([
+             'servicioCategoria:id,nombre',
+             'unidad'
+            
+         ])
+         ->find($id);
+         return response()->json([
+             'data' => $data
+         ], $code );
     }
 
     /**

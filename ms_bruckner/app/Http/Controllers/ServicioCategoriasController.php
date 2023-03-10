@@ -35,7 +35,11 @@ class ServicioCategoriasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $code = 200;
+        $data = ServicioCategorias::find($id);
+         return response()->json([
+             'data' => $data
+         ], $code );
     }
 
     /**
