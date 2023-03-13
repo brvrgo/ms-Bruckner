@@ -25,18 +25,22 @@ use App\Http\Controllers\OperadoresController as Operadores;
 */
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(
+	['middleware' => ['cors']
+], function () {
+	
+	Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+	    return $request->user();
+	});
+
+	Route::apiResource( '/unidades', Unidades::class);
+	Route::apiResource( '/unidad-tipos', UnidadTipos::class );
+	Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
+
+	Route::apiResource( '/servicios', Servicio::class);
+	Route::apiResource( '/servicio-categorias', ServicioCategorias::class);
+	Route::apiResource( '/servicio-pasos', ServicioPasos::class);
+	Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class);
+
+	Route::apiResource( '/operadores', Operadores::class);
 });
-
-Route::apiResource( '/unidades', Unidades::class);
-Route::apiResource( '/unidad-tipos', UnidadTipos::class );
-Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
-
-Route::apiResource( '/servicios', Servicio::class);
-Route::apiResource( '/servicio-categorias', ServicioCategorias::class);
-Route::apiResource( '/servicio-pasos', ServicioPasos::class);
-Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class);
-
-
-Route::apiResource( '/operadores', Operadores::class);
