@@ -76,7 +76,8 @@ class UnidadesController extends Controller
             'marca:id,nombre',
             'servicios'=>[
                 'categoria:id,nombre'
-            ]
+            ],
+            'operador'
         ])
         ->get();
         return response()->json([

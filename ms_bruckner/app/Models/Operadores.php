@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class ServicioPaso extends Model
+class Operadores extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'servicio_pasos';
-
-    public function servicio( ){ 
-        return $this->belongsTo( Servicio::class, 'servicio_id', 'id');
+    protected $table = 'operadores';
+    
+    public function unidad( ){
+        return $this->hasOne( Unidad::class, 'id' ,'unidad_id');
         
     }
-
-
 }

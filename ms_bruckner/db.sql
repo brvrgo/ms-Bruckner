@@ -168,6 +168,19 @@ create table `servicio_seguimiento` (
     foreign key (`updated_by`) references `users`(`id`) on update cascade on delete restrict        
 );
 
+drop table if exists `operadores`;
+create table `operadores` (
+    `id` bigint unsigned auto_increment primary key,
+    `unidad_id` mediumint unsigned default null,
+    `nombre` varchar(100) default null,
+    `created_by` bigint unsigned default null,
+    `updated_by` bigint unsigned default null,
+    `created_at` timestamp not null default current_timestamp,
+    `updated_at` timestamp not null default current_timestamp on update current_timestamp,
+
+    foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict
+        
+);
 
 
 

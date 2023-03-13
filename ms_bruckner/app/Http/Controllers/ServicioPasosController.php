@@ -17,6 +17,7 @@ class ServicioPasosController extends Controller
         return response()->json([
             'data' => $data
         ], $code );
+        
     }
 
     /**
@@ -32,18 +33,15 @@ class ServicioPasosController extends Controller
      */
     public function show(string $id)
     {
-        /*
+        
         $code = 200;
         //Obtención de los datos de la Unidad
-       $data = ServicioPasos::with([
-            'tipo:id,nombre',
-            'marca:id,nombre',
-            'servicios'=>[
-                'servicioCategoria:id,nombre'
-            ]
-        ])
-        ->find($id);
-        */
+       $data = ServicioPasos::find($id);
+
+        return response()->json([
+            'data' => $data
+        ], $code );
+        
     }
 
     /**
