@@ -111,16 +111,18 @@ class UnidadesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $id)
+    public function show( $id)
     {   
+        
         $code = 200;
         //Obtención de los datos de la Unidad
        $data = Unidad::with([
             'tipo:id,nombre',
             'marca:id,nombre',
             'servicios'=>[
-                'servicioCategoria:id,nombre'
-            ]
+                'categoria:id,nombre'
+            ],
+            'operador'
         ])
         ->find($id);
 
@@ -131,10 +133,13 @@ class UnidadesController extends Controller
             1)data
             2)servicios
         */
+        
         return response()->json([
             'data' => $data,
            
         ], $code );
+        
+        
     }
 
     /**
