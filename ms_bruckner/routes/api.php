@@ -1,4 +1,5 @@
 <?php
+//header('Access-Control-Allow-Origin: *');
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ use App\Http\Controllers\OperadoresController as Operadores;
 Route::group([
     //'middleware' => ['cors']
 ], function () {
-	
+
 	Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 	    return $request->user();
 	});
@@ -42,8 +43,7 @@ Route::group([
 	Route::apiResource( '/servicio-pasos', ServicioPasos::class);
 	Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class);
 
-
-Route::apiResource( '/operadores', Operadores::class);
-Route::put( '/operadores/{id}/asignar-unidad', [Operadores::class,'asignarUnidad']);
+	Route::apiResource( '/operadores', Operadores::class);
+	Route::put( '/operadores/{id}/asignar-unidad', [Operadores::class,'asignarUnidad']);
 
 });
