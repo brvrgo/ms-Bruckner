@@ -40,3 +40,5 @@ Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class);
 
 
 Route::apiResource( '/operadores', Operadores::class);
+Route::put( '/operadores/{id}/asignar-unidad', [Operadores::class,'asignarUnidad']);
+

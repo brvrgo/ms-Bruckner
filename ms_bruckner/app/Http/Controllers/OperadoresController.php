@@ -32,6 +32,19 @@ class StoreRequest extends ApiRequest {
         }
     }
 
+    class AsignarUnidadRequest extends ApiRequest {
+        public function rules() {
+            return [
+                'unidad_id'=>['required'] 
+            ];
+        }
+        public function messages() {
+            return [
+                'unidad_id.required' => 'La unidad es requerida',
+            ];
+        }
+    }
+
     
 class OperadoresController extends Controller
 {
@@ -90,6 +103,21 @@ class OperadoresController extends Controller
         
         $row->unidad_id = $request['unidad_id'];
         $row->nombre = $request['nombre'];
+
+      
+        $row->save();
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
+    }
+
+    public function asignarUnidad(AsignarUnidadRequest $request, string $id)
+    {
+        $row = Operador::find( $id );
+        
+        $row->unidad_id = $request['unidad_id'];
 
       
         $row->save();

@@ -32,12 +32,7 @@ class Unidad extends Model {
         return $this->belongsTo( Operadores::class,  'id','unidad_id');
         
     }
-    /*
-    public function operador( ){
-        return $this->hasOne( Operadores::class, 'id' ,'unidad_id');
-        
-    }
-    */
+
     /*
     public function serviciosAbiertos( ){
         return $this->belongsTo( UnidadTipo::class,  'tipo_id','id');
