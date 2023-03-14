@@ -24,8 +24,15 @@ class ServicioPasosController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //$row->created_by= $request['created_by']??NULL;
+    {   
+        $row = new ServicioPasos();
+        $row->nombre = $request['nombre'];
+        $row->descripcion = $request['descripcion'];
+        $row->created_by= $request['created_by']??NULL;
+        $row->save();
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json( [], $code );
+       
     }
 
     /**
@@ -49,7 +56,18 @@ class ServicioPasosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $row = ServicioPasos::find( $id );
+        
+        $row->nombre = $request['nombre'];
+        $row->descripcion = $request['descripcion'];
+        $row->created_by= $request['created_by']??NULL;
+        $row->save();
+      
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 
     /**
@@ -57,6 +75,11 @@ class ServicioPasosController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        $data = ServicioPasos::find( $id );
+        $data->delete();
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 }

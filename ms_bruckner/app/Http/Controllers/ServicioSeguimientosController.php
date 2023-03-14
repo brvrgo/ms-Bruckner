@@ -31,8 +31,17 @@ class ServicioSeguimientosController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //$row->created_by= $request['created_by'];
+    {   
+        $row = new ServicioSeguimiento();
+        $row->servicio_id = $request['servicio_id'];
+        $row->paso_id = $request['paso_id'];
+        $row->notas = $request['notas'];
+        $row->created_by= $request['created_by']??NULL;
+        $row->save();
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json( [], $code );
+
+        
     }
 
     /**
@@ -57,7 +66,14 @@ class ServicioSeguimientosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $row =ServicioSeguimiento::find( $id );
+        $row->servicio_id = $request['servicio_id'];
+        $row->paso_id = $request['paso_id'];
+        $row->notas = $request['notas'];
+        $row->created_by= $request['created_by']??NULL;
+        $row->save();
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json( [], $code );
     }
 
     /**
@@ -65,6 +81,11 @@ class ServicioSeguimientosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = ServicioSeguimiento::find( $id );
+        $data->delete();
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 }
