@@ -59,7 +59,7 @@ class ServiciosController extends Controller
                     'tipo'
                 ]
             ] ,
-            'createdBy'
+            'usuario'
             
         ])
         ->get();
@@ -86,7 +86,7 @@ class ServiciosController extends Controller
 
         $row->save();
         $code = $row->isClean() ? 201 : 400;
-        return response()->json( [], $code );
+        return response()->json( [$row->id], $code );
 
       
     }
@@ -107,7 +107,7 @@ class ServiciosController extends Controller
                     'tipo'
                 ]
             ] ,
-            'createdBy'
+            'createdBY'
             
          ])
          ->find($id);

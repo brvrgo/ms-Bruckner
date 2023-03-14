@@ -19,8 +19,13 @@ class ServicioSolicitudController extends Controller
         $data = ServicioSolicitud::with([
              'unidad',
              'operador',
-             'servicios',
-             'unidad',
+             'servicios'=>[
+                'categoria'
+             ],
+             'unidad'=>[
+                'tipo',
+                'marca'
+            ],
              'createdBy'
          ])
          ->get();
@@ -36,14 +41,14 @@ class ServicioSolicitudController extends Controller
     {
         $row = new ServicioSolicitud();
 
-            DB::transaction( function() use ($row, $request) {
+            DB::transaction( function() use ($row, $request,$servicios) {
             $row->operador_id = $request['operador_id'];
             $row->unidad_id = $request['unidad_id'];
             $row->created_by= $request['created_by']??NULL;
             $row->save();
 
             if( isset($request['servicios']) && is_iterable($request['servicios']) ){
-    
+            
                 foreach(  $request['servicios'] as $servicio ){                
                     $servicioRow = new Servicio();
                     $servicioRow->categoria_id = $servicio['categoria_id'];
@@ -51,13 +56,17 @@ class ServicioSolicitudController extends Controller
                     $servicioRow->created_by= $request['created_by'];
                     $servicioRow->notas= $servicio['notas'];
                     $servicioRow->save();
+                    
                 }
+                return $servicios;
+               
             }
-              
+           
         });
 
         $code = $row->isClean() ? 201 : 400;
-        return response()->json( [], $code );
+
+        return response()->json( $row, $code );
     }
 
     /**

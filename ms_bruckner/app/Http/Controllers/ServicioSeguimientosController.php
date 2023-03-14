@@ -32,7 +32,7 @@ class ServicioSeguimientosController extends Controller
      */
     public function store(Request $request)
     {
-        //$row->created_by= $request['created_by']??NULL;
+        //$row->created_by= $request['created_by'];
     }
 
     /**

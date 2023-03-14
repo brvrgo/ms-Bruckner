@@ -101,7 +101,6 @@ class OperadoresController extends Controller
     {
         $row = Operador::find( $id );
         
-        $row->unidad_id = $request['unidad_id'];
         $row->nombre = $request['nombre'];
 
       

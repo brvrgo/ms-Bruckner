@@ -57,6 +57,6 @@ class ServicioPasosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }
