@@ -28,5 +28,10 @@ class ServicioSolicitud extends Model
     public function servicios( ){
        return $this->hasMany(Servicio::class, 'solicitud_id', 'id');
     }
+
+    
+    public function createdBy(){
+        return $this->belongsTo( User::class, 'created_by', 'id');
+    }
     
 }

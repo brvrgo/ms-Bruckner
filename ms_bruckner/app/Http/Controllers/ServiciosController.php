@@ -58,7 +58,8 @@ class ServiciosController extends Controller
                     'marca',
                     'tipo'
                 ]
-            ] 
+            ] ,
+            'createdBy'
             
         ])
         ->get();
@@ -105,7 +106,8 @@ class ServiciosController extends Controller
                     'marca',
                     'tipo'
                 ]
-            ] 
+            ] ,
+            'createdBy'
             
          ])
          ->find($id);

@@ -22,6 +22,10 @@ class Unidad extends Model {
         return $this->belongsTo( UnidadTipo::class,  'tipo_id','id');
         
     }
+
+    public function createdBy(){
+        return $this->belongsTo( User::class, 'created_by', 'id');
+    }
     /*
     public function servicios( ): HasMany{
         return $this->hasMany( Servicio::class);

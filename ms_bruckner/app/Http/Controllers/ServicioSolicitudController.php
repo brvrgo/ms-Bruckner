@@ -19,7 +19,9 @@ class ServicioSolicitudController extends Controller
         $data = ServicioSolicitud::with([
              'unidad',
              'operador',
-             'servicios'
+             'servicios',
+             'unidad',
+             'createdBy'
          ])
          ->get();
          return response()->json([
@@ -67,7 +69,8 @@ class ServicioSolicitudController extends Controller
         $data = ServicioSolicitud::with([
              'unidad',
              'operador',
-             'servicios'
+             'servicios',
+             'createdBy'
          ])
          ->find($id);
          return response()->json([
