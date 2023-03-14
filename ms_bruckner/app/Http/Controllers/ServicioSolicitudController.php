@@ -63,6 +63,7 @@ class ServicioSolicitudController extends Controller
     /**
      * Display the specified resource.
      */
+    
     public function show(string $id)
     {
         $code = 200;
@@ -96,6 +97,7 @@ class ServicioSolicitudController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(string $id)
     {
         $data = ServicioSolicitud::find( $id );
