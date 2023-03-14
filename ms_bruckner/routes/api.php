@@ -44,7 +44,7 @@ Route::group([
 	Route::apiResource( '/servicio-categorias', ServicioCategorias::class); //Categorías de Servicio
 	Route::apiResource( '/servicio-pasos', ServicioPasos::class); //Paos del servicio
 	Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class); //Historial de los servicios
-    Route::apiResource( '/servicio-solicitud', ServicioSolicitud::class); //Solicitud de los servicios (antes identificador)
+    Route::apiResource( '/servicio-solicitudes', ServicioSolicitud::class); //Solicitud de los servicios (antes identificador)
 
 	Route::apiResource( '/operadores', Operadores::class);
 	Route::put( '/operadores/{id}/asignar-unidad', [Operadores::class,'asignarUnidad']);

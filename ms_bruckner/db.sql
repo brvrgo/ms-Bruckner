@@ -145,7 +145,7 @@ create table `servicios` (
 
     foreign key (`categoria_id`) references `servicio_categorias`(`id`) on update cascade on delete restrict,
     foreign key (`servicio_solicitud_id`) references `servicio_solicitudes`(`id`) on update cascade on delete restrict,
-    foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict,
+   /* foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict,*/
     foreign key (`created_by`) references `users`(`id`) on update cascade on delete restrict,
     foreign key (`updated_by`) references `users`(`id`) on update cascade on delete restrict    
 );
