@@ -51,8 +51,15 @@ class ServiciosController extends Controller
     {
         $code = 200;
           $data = Servicio::with([
-            'categoria:id,nombre',
-            //'unidad'
+            'categoria',
+            'solicitud'=>[
+                'operador',
+                'unidad'=>[
+                    'marca',
+                    'tipo'
+                ]
+            ] 
+            
         ])
         ->get();
         
@@ -69,9 +76,9 @@ class ServiciosController extends Controller
         
         $row = new Servicio();
         $row->categoria_id = $request['categoria_id'];
-        $row->created_by= $request['created_by'];
+        $row->created_by= $request['created_by']??NULL;
         $row->unidad_id = $request['unidad_id'];
-        $row->servicio_solicitud_id = $request['servicio_solicitud_id'];
+        $row->solicitud_id = $request['solicitud_id'];
         $row->notas = $request['notas'];
         
      
@@ -108,6 +115,7 @@ class ServiciosController extends Controller
     {
         $row = Servicio::find( $id );
         
+        $row->solicitud_id = $request['solicitud_id'];
         $row->categoria_id = $request['categoria_id'];
         $row->unidad_id = $request['unidad_id'];
         $row->notas = $request['notas'];

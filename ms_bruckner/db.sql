@@ -128,7 +128,7 @@ create table `servicio_categorias` (
 drop table if exists `servicios`;
 create table `servicios` (
     `id` int unsigned auto_increment primary key,
-    `servicio_solicitud_id` int unsigned , 
+    `solicitud_id` int unsigned , 
     `categoria_id` tinyint unsigned default null,
     /*`unidad_id` mediumint unsigned default null,*/
     
@@ -144,7 +144,7 @@ create table `servicios` (
     `deleted_at` timestamp null default null,
 
     foreign key (`categoria_id`) references `servicio_categorias`(`id`) on update cascade on delete restrict,
-    foreign key (`servicio_solicitud_id`) references `servicio_solicitudes`(`id`) on update cascade on delete restrict,
+    foreign key (`solicitud_id`) references `servicio_solicitudes`(`id`) on update cascade on delete restrict,
    /* foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict,*/
     foreign key (`created_by`) references `users`(`id`) on update cascade on delete restrict,
     foreign key (`updated_by`) references `users`(`id`) on update cascade on delete restrict    

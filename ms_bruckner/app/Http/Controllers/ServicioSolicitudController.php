@@ -37,7 +37,7 @@ class ServicioSolicitudController extends Controller
             DB::transaction( function() use ($row, $request) {
             $row->operador_id = $request['operador_id'];
             $row->unidad_id = $request['unidad_id'];
-            $row->created_by= $request['created_by'];
+            $row->created_by= $request['created_by']??NULL;
             $row->save();
 
             if( isset($request['servicios']) && is_iterable($request['servicios']) ){

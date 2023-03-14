@@ -72,7 +72,7 @@ class OperadoresController extends Controller
         $row = new Operador();
         $row->unidad_id = $request['unidad_id'];
         $row->nombre = $request['nombre'];
-
+        $row->created_by= $request['created_by']??NULL;
         $row->save();
         $code = $row->isClean() ? 201 : 400;
         return response()->json( [], $code );

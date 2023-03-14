@@ -27,7 +27,7 @@ class ServicioCategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$$row->created_by= $request['created_by']??NULL;
     }
 
     /**

@@ -100,7 +100,7 @@ class UnidadesController extends Controller
         $row->modelo = $request['modelo'];
         $row->serie = $request['serie'];
         $row->placa = $request['placa'];
-        $row->created_by= $request['created_by'];
+        $row->created_by= $request['created_by']??NULL;
      
 
         $row->save();

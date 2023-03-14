@@ -63,7 +63,7 @@ class UnidadTiposController extends Controller {
         $row->created_by = $request->user()->id;
         $row->nombre = $request['nombre'];
         $row->descripcion = $request['descripcion'];
-        $row->created_by= $request['created_by'];
+        $row->created_by= $request['created_by']??NULL;
 
         $row->save();
         $code = $row->isClean() ? 201 : 400;

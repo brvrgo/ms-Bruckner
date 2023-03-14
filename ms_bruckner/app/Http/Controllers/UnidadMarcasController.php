@@ -58,18 +58,14 @@ class UnidadMarcasController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( Request $request ){
+    public function store( StoreRequest $request ){
 
-        $request->validate([
-            'nombre' => ['required', "unique:App\Models\Area,nombre"],
-            'descripcion' => ['required'],
-        ]);
-
+        /*
         $row = new UnidadTipo();
         $row->created_by = $request->user()->id;
         $row->nombre = $request['nombre'];
         $row->descripcion = $request['descripcion'];
-        $row->created_by= $request['created_by'];
+        $row->created_by= $request['created_by']??NULL;
 
         $row->save();
 
@@ -92,7 +88,7 @@ class UnidadMarcasController extends Controller {
                 ]
             );
         }
-
+            */
     }
 
     /**

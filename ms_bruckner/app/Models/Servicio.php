@@ -18,6 +18,11 @@ class Servicio extends Model
         
     }
 
+    public function solicitud( ){ 
+        return $this->belongsTo( ServicioSolicitud::class, 'solicitud_id', 'id');
+        
+    }
+
   
 
     

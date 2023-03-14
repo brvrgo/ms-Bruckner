@@ -16,7 +16,7 @@ class ServicioSolicitud extends Model
 
     public function operador( ){
         //return $this->belongsTo( Operadores::class,  'id','unidad_id');
-        return $this->hasOne( Operadores::class, 'id','operador_id' );
+        return $this->hasOne( Operador::class, 'id','operador_id' );
         
     }
 
@@ -26,7 +26,6 @@ class ServicioSolicitud extends Model
     }
 
     public function servicios( ){
-       // return $this->hasMany( Servicio::class);
        return $this->hasMany(Servicio::class, 'servicio_solicitud_id', 'id');
     }
     
