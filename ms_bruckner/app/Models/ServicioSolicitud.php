@@ -26,7 +26,7 @@ class ServicioSolicitud extends Model
     }
 
     public function servicios( ){
-       return $this->hasMany(Servicio::class, 'servicio_solicitud_id', 'id');
+       return $this->hasMany(Servicio::class, 'solicitud_id', 'id');
     }
     
 }

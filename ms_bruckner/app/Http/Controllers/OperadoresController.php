@@ -113,20 +113,6 @@ class OperadoresController extends Controller
         ], $code );
     }
 
-    public function asignarUnidad(AsignarUnidadRequest $request, string $id)
-    {
-        $row = Operador::find( $id );
-        
-        $row->unidad_id = $request['unidad_id'];
-
-      
-        $row->save();
-        $code = $row->isClean() ? 201 : 400;
-        return response()->json([
-            'status' => 'success',
-            'data' => []
-        ], $code );
-    }
 
     /**
      * Remove the specified resource from storage.

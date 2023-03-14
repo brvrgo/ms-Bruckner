@@ -45,7 +45,7 @@ class ServicioSolicitudController extends Controller
                 foreach(  $request['servicios'] as $servicio ){                
                     $servicioRow = new Servicio();
                     $servicioRow->categoria_id = $servicio['categoria_id'];
-                    $servicioRow->servicio_solicitud_id = $row->id;
+                    $servicioRow->solicitud_id = $row->id;
                     $servicioRow->created_by= $request['created_by'];
                     $servicioRow->notas= $servicio['notas'];
                     $servicioRow->save();

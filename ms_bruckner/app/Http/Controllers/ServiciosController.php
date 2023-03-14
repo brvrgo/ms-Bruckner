@@ -98,8 +98,14 @@ class ServiciosController extends Controller
      
          $code = 200;
         $data = Servicio::with([
-             'categoria:id,nombre',
-             //'unidad'
+            'categoria',
+            'solicitud'=>[
+                'operador',
+                'unidad'=>[
+                    'marca',
+                    'tipo'
+                ]
+            ] 
             
          ])
          ->find($id);
