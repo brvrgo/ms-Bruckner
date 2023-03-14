@@ -55,7 +55,7 @@ class OperadoresController extends Controller
     {
         $code = 200;
         $data = Operador::with([
-             'unidad'
+           //  'unidad'
             
          ])
          ->get();
@@ -85,7 +85,7 @@ class OperadoresController extends Controller
     {
         $code = 200;
         $data = Operador::with([
-             'unidad'
+            // 'unidad'
             
          ])
          ->find($id);

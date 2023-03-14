@@ -11,7 +11,9 @@ use App\Http\Controllers\ServiciosController as Servicio;
 use App\Http\Controllers\ServicioCategoriasController as ServicioCategorias;
 use App\Http\Controllers\ServicioPasosController as ServicioPasos; 
 use App\Http\Controllers\ServicioSeguimientosController as ServicioSeguimiento;
+use App\Http\Controllers\ServicioSolicitudController as ServicioSolicitud;
 use App\Http\Controllers\OperadoresController as Operadores; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +40,10 @@ Route::group([
 	Route::apiResource( '/unidad-marcas', UnidadMarcas::class );
 
 	Route::apiResource( '/servicios', Servicio::class);
-	Route::apiResource( '/servicio-categorias', ServicioCategorias::class);
-	Route::apiResource( '/servicio-pasos', ServicioPasos::class);
-	Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class);
+	Route::apiResource( '/servicio-categorias', ServicioCategorias::class); //Categorías de Servicio
+	Route::apiResource( '/servicio-pasos', ServicioPasos::class); //Paos del servicio
+	Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class); //Historial de los servicios
+    Route::apiResource( '/servicio-solicitud', ServicioSolicitud::class); //Solicitud de los servicios (antes identificador)
 
 
 Route::apiResource( '/operadores', Operadores::class);

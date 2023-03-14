@@ -18,10 +18,7 @@ class Servicio extends Model
         
     }
 
-    public function unidad( ){
-        return $this->hasOne( Unidad::class, 'id' ,'unidad_id');
-        
-    }
+  
 
     
     /*

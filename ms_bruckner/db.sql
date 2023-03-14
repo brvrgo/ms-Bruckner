@@ -128,8 +128,9 @@ create table `servicio_categorias` (
 drop table if exists `servicios`;
 create table `servicios` (
     `id` int unsigned auto_increment primary key,
+    `servicio_solicitud_id` int unsigned , 
     `categoria_id` tinyint unsigned default null,
-    `unidad_id` mediumint unsigned default null,
+    /*`unidad_id` mediumint unsigned default null,*/
     
     `notas` varchar(255) default null,
 
@@ -143,6 +144,7 @@ create table `servicios` (
     `deleted_at` timestamp null default null,
 
     foreign key (`categoria_id`) references `servicio_categorias`(`id`) on update cascade on delete restrict,
+    foreign key (`servicio_solicitud_id`) references `servicio_solicitudes`(`id`) on update cascade on delete restrict,
     foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict,
     foreign key (`created_by`) references `users`(`id`) on update cascade on delete restrict,
     foreign key (`updated_by`) references `users`(`id`) on update cascade on delete restrict    
@@ -172,7 +174,7 @@ create table `servicio_seguimiento` (
 drop table if exists `operadores`;
 create table `operadores` (
     `id` int unsigned auto_increment primary key,
-    `unidad_id` mediumint unsigned default null,
+   /* `unidad_id` mediumint unsigned default null,*/
     `nombre` varchar(100) default null,
     `created_by` bigint unsigned default null,
     `updated_by` bigint unsigned default null,
@@ -181,6 +183,23 @@ create table `operadores` (
     `deleted_at` timestamp null default null ,
 
     foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict
+        
+);
+
+drop table if exists `servicio_solicitudes`;
+create table `servicio_solicitudes` (
+    `id` int unsigned auto_increment primary key,
+    `operador_id` int unsigned ,
+    `unidad_id`  mediumint unsigned  ,
+    `created_by` bigint unsigned default null,
+    `updated_by` bigint unsigned default null,
+    `created_at` timestamp not null default current_timestamp,
+    `updated_at` timestamp not null default current_timestamp on update current_timestamp,
+    `deleted_at` timestamp null default null ,
+
+     foreign key (`operador_id`) references `operadores`(`id`) on update cascade on delete restrict,
+     foreign key (`unidad_id`) references `unidades`(`id`) on update cascade on delete restrict
+
         
 );
 

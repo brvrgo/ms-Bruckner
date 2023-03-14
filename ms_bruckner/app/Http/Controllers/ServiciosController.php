@@ -52,7 +52,7 @@ class ServiciosController extends Controller
         $code = 200;
           $data = Servicio::with([
             'categoria:id,nombre',
-            'unidad'
+            //'unidad'
         ])
         ->get();
         
@@ -70,6 +70,7 @@ class ServiciosController extends Controller
         $row = new Servicio();
         $row->categoria_id = $request['categoria_id'];
         $row->unidad_id = $request['unidad_id'];
+        $row->servicio_solicitud_id = $request['servicio_solicitud_id'];
         $row->notas = $request['notas'];
         
      
@@ -90,7 +91,7 @@ class ServiciosController extends Controller
          $code = 200;
         $data = Servicio::with([
              'categoria:id,nombre',
-             'unidad'
+             //'unidad'
             
          ])
          ->find($id);

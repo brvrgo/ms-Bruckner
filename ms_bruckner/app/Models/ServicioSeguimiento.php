@@ -14,13 +14,11 @@ class ServicioSeguimiento extends Model
     protected $table = 'servicio_seguimiento';
 
     public function servicio( ){ 
+        
         return $this->belongsTo( Servicio::class, 'servicio_id', 'id');
         
     }
 
-    /* public function paso( ){
-        return $this->hasOne( ServicioPaso::class, 'id' ,'paso_id');// tomar el ultimo paso
-        
-    } */
+
 
 }

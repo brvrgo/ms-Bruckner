@@ -22,16 +22,18 @@ class Unidad extends Model {
         return $this->belongsTo( UnidadTipo::class,  'tipo_id','id');
         
     }
-    
+    /*
     public function servicios( ): HasMany{
         return $this->hasMany( Servicio::class);
         
-    }
+    }*/
 
+    /*
     public function operador( ){
         return $this->belongsTo( Operadores::class,  'id','unidad_id');
         
     }
+    /*
 
     /*
     public function serviciosAbiertos( ){

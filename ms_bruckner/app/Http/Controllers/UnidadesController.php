@@ -74,10 +74,10 @@ class UnidadesController extends Controller
         $data = Unidad::with([
             'tipo:id,nombre',
             'marca:id,nombre',
-            'servicios'=>[
+           /* 'servicios'=>[
                 'categoria:id,nombre'
             ],
-            'operador'
+            'operador'*/
         ])
         ->get();
         return response()->json([
@@ -119,10 +119,11 @@ class UnidadesController extends Controller
        $data = Unidad::with([
             'tipo:id,nombre',
             'marca:id,nombre',
-            'servicios'=>[
+           /* 'servicios'=>[
                 'categoria:id,nombre'
             ],
             'operador'
+            */
         ])
         ->find($id);
 
