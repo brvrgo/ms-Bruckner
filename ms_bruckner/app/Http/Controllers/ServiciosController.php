@@ -69,6 +69,7 @@ class ServiciosController extends Controller
         
         $row = new Servicio();
         $row->categoria_id = $request['categoria_id'];
+        $row->created_by= $request['created_by'];
         $row->unidad_id = $request['unidad_id'];
         $row->servicio_solicitud_id = $request['servicio_solicitud_id'];
         $row->notas = $request['notas'];

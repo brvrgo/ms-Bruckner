@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServicioSolicitud as ServicioSolicitud;
+use App\Models\Servicio as Servicio;
+use Illuminate\Support\Facades\DB;
 
 
 class ServicioSolicitudController extends Controller
@@ -31,11 +33,27 @@ class ServicioSolicitudController extends Controller
     public function store(Request $request)
     {
         $row = new ServicioSolicitud();
-        $row->operador_id = $request['operador_id'];
-        $row->unidad_id = $request['unidad_id'];
-      
 
-        $row->save();
+            DB::transaction( function() use ($row, $request) {
+            $row->operador_id = $request['operador_id'];
+            $row->unidad_id = $request['unidad_id'];
+            $row->created_by= $request['created_by'];
+            $row->save();
+
+            if( isset($request['servicios']) && is_iterable($request['servicios']) ){
+    
+                foreach(  $request['servicios'] as $servicio ){                
+                    $servicioRow = new Servicio();
+                    $servicioRow->categoria_id = $servicio['categoria_id'];
+                    $servicioRow->servicio_solicitud_id = $row->id;
+                    $servicioRow->created_by= $request['created_by'];
+                    $servicioRow->notas= $servicio['notas'];
+                    $servicioRow->save();
+                }
+            }
+              
+        });
+
         $code = $row->isClean() ? 201 : 400;
         return response()->json( [], $code );
     }
