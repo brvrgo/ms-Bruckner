@@ -41,7 +41,7 @@ class ServicioSolicitudController extends Controller
     {
         $row = new ServicioSolicitud();
 
-            DB::transaction( function() use ($row, $request,$servicios) {
+            DB::transaction( function() use ($row, $request) {
             $row->operador_id = $request['operador_id'];
             $row->unidad_id = $request['unidad_id'];
             $row->created_by= $request['created_by']??NULL;
@@ -58,7 +58,7 @@ class ServicioSolicitudController extends Controller
                     $servicioRow->save();
                     
                 }
-                return $servicios;
+               
                
             }
            

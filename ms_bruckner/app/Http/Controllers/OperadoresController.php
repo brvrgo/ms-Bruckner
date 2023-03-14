@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Operadores as Operador;
+use App\Models\Operador as Operador;
 use App\Http\Requests\ApiRequest;
 
 class StoreRequest extends ApiRequest {

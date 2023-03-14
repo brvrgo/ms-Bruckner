@@ -60,35 +60,18 @@ class UnidadMarcasController extends Controller {
      */
     public function store( StoreRequest $request ){
 
-        /*
-        $row = new UnidadTipo();
-        $row->created_by = $request->user()->id;
+        
+        $row = new UnidadMarca();
         $row->nombre = $request['nombre'];
-        $row->descripcion = $request['descripcion'];
         $row->created_by= $request['created_by']??NULL;
 
+      
         $row->save();
+        $code = $row->isClean() ? 201 : 400;
+        return response()->json( [], $code );
 
-        if( $row->isClean() ){
-
-            session()->flash(
-                'flash', [
-                    'status' => "success",
-                    'message' => "Registro creado correctamente"
-                ]
-            );
-
-            return redirect('/areas');
-
-        } else {
-            session()->flash(
-                'flash', [
-                    'status' => "error",
-                    'message' => "datos incorrectos"
-                ]
-            );
-        }
-            */
+ 
+            
     }
 
     /**
@@ -98,7 +81,7 @@ class UnidadMarcasController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $data = UnidadTipo::find( $id );
+        $data = UnidadMarca::find( $id );
         return response()->json( $data );
     }
 
@@ -111,36 +94,11 @@ class UnidadMarcasController extends Controller {
      */
     public function update(Request $request, $id){
 
-        $request->validate([
-            'nombre' => ['required', "unique:App\Models\Planta,nombre,$id"],
-            'descripcion' => ['required'],
-        ]);
-        $row = UnidadTipo::find( $id );
+       
+        $row = UnidadMarca::find( $id );
         $row->updated_by = $request->user()->id;
         $row->nombre = $request['nombre'];
-        $row->descripcion = $request['descripcion'];
-
         $row->save();
-
-        if( $row->isClean() ){
-
-            session()->flash(
-                'flash', [
-                    'status' => "success",
-                    'message' => "Registro creado correctamente"
-                ]
-            );
-
-            return redirect('/areas');
-
-        } else {
-            session()->flash(
-                'flash', [
-                    'status' => "error",
-                    'message' => "datos incorrectos"
-                ]
-            );
-        }
         
 
     }
@@ -152,7 +110,11 @@ class UnidadMarcasController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $data = UnidadTipo::find( $id );
+        $data = UnidadMarca::find( $id );
         $data->delete();
+        return response()->json([
+            'status' => 'success',
+            'data' => []
+        ], $code );
     }
 }

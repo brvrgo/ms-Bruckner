@@ -43,7 +43,7 @@ Route::group([
 	Route::apiResource( '/servicios', Servicio::class);
 	Route::apiResource( '/servicio-categorias', ServicioCategorias::class); //Categorías de Servicio
 	Route::apiResource( '/servicio-pasos', ServicioPasos::class); //Paos del servicio
-	Route::apiResource( '/servicio-seguimiento', ServicioSeguimiento::class); //Historial de los servicios
+	Route::apiResource( '/servicio-seguimientos', ServicioSeguimiento::class); //Historial de los servicios
     Route::apiResource( '/servicio-solicitudes', ServicioSolicitud::class); //Solicitud de los servicios (antes identificador)
 
 	Route::apiResource( '/operadores', Operadores::class);
