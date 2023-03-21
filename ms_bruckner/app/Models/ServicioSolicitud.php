@@ -21,7 +21,7 @@ class ServicioSolicitud extends Model
     }
 
     public function unidad( ){
-        return $this->hasOne( Unidad::class, 'id' ,'unidad_id');
+        return $this->belongsTo( Unidad::class, 'unidad_id','id' );
         
     }
 
