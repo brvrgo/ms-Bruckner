@@ -28,6 +28,7 @@ class Unidad extends Model {
         return $this->belongsTo( ServicioSolicitud::class, 'unidad_id', 'id');
     }
     */
+    
     public function servicioSolicitudes( ): HasMany{
         return $this->hasMany( ServicioSolicitud::class,'unidad_id','id');
         
@@ -46,19 +47,18 @@ class Unidad extends Model {
     public function createdBy(){
         return $this->belongsTo( User::class, 'created_by', 'id');
     }
+
     /*
     public function servicios( ): HasMany{
         return $this->hasMany( Servicio::class);
         
     }*/
-
     /*
     public function operador( ){
         return $this->belongsTo( Operadores::class,  'id','unidad_id');
         
     }
     /*
-
     /*
     public function serviciosAbiertos( ){
         return $this->belongsTo( UnidadTipo::class,  'tipo_id','id');

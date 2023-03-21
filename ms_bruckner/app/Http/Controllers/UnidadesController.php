@@ -121,9 +121,12 @@ class UnidadesController extends Controller
        $data = Unidad::with([
             'tipo:id,nombre',
             'marca:id,nombre',
-            'servicioSolicitudes'=>
-            ['servicios'],
-            'actualServicioSolicitud',
+            'servicioSolicitudes' => [
+                'servicios'
+            ],
+            'actualServicioSolicitud' => [
+                'servicios'
+            ],
             'createdBy'
            /* 'servicios'=>[
                 'categoria:id,nombre'
