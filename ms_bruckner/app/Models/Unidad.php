@@ -37,7 +37,7 @@ class Unidad extends Model {
     public function actualServicioSolicitud(): HasOne
 {
     return $this->hasOne(ServicioSolicitud::class)->ofMany([
-        'created_at' => 'max',
+        'id' => 'max',
     ], function ( $query) {
         //$query->where('published_at', '<', now());
     });
